@@ -38,7 +38,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
 
 .controller('SoundCtrl', function($scope,$ionicPlatform,$state, $ionicLoading, $ionicPopup,$timeout) {
-  //console.log = function() {};
+  console.log = function() {};
   $scope.flags = [];
   $scope.loaderProg = $ionicLoading;
   $scope.ionicPopup = $ionicPopup;

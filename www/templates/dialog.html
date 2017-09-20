@@ -223,11 +223,22 @@
     var rating = selected[0].id.substring(selected[0].id.indexOf("-")+1);
     console.log(rating);
     var inner = $(form)[0].innerText;
-    var result = inner.split(/\n/)[2];
+    var result = inner;
     console.log(result);
     if(typeof window.analytics !== 'undefined'){
       window.analytics.trackEvent('Ratings', 'Ratings', 'Number', parseInt(rating));
-      window.analytics.trackEvent('Feedback', 'Feedback', 'Description', result);
+      window.analytics.trackEvent('Feedback', 'Feedback', result, parseInt(rating));
+      try {
+        window.plugins.toast.showWithOptions(
+          {
+            message: "Thank you for your feedback!",
+            duration: "long", // which is 2000 ms. "long" is 4000. Or specify the nr of ms yourself.
+            position: "bottom",
+            addPixelsY: -40  // added a negative value to move it up a bit (default 0)
+          }
+        );
+      }
+      catch(err){console.log(err);}
     }
     if(angular.element(document.getElementById('controllerForAngular')).scope().popup)
       angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
