@@ -1,0 +1,261 @@
+ <style type="text/css">
+                        .form-style-5{
+                          max-width: 500px;
+                          padding: 10px 20px;
+                          background: #f4f7f8;
+                          margin: 10px auto;
+                          padding: 20px;
+                          background: #f4f7f8;
+                          border-radius: 8px;
+                          font-family: Georgia, "Times New Roman", Times, serif;
+                        }
+  .form-style-5 fieldset{
+    border: none;
+  }
+  .form-style-5 legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  .form-style-5 label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .form-style-5 input[type="text"],
+  .form-style-5 input[type="date"],
+  .form-style-5 input[type="datetime"],
+  .form-style-5 input[type="email"],
+  .form-style-5 input[type="number"],
+  .form-style-5 input[type="search"],
+  .form-style-5 input[type="time"],
+  .form-style-5 input[type="url"],
+  .form-style-5 textarea,
+  .form-style-5 select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+
+  }
+  .form-style-5 input[type="text"]:focus,
+  .form-style-5 input[type="date"]:focus,
+  .form-style-5 input[type="datetime"]:focus,
+  .form-style-5 input[type="email"]:focus,
+  .form-style-5 input[type="number"]:focus,
+  .form-style-5 input[type="search"]:focus,
+  .form-style-5 input[type="time"]:focus,
+  .form-style-5 input[type="url"]:focus,
+  .form-style-5 textarea:focus,
+  .form-style-5 select:focus{
+    background: #d2d9dd;
+  }
+  .form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+  }
+  .form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+  }
+
+  .form-style-5 input[type="submit"],
+  .form-style-5 input[type="button"]
+  {
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+  }
+  .form-style-5 input[type="submit"]:hover,
+  .form-style-5 input[type="button"]:hover
+  {
+    background: #109177;
+  }
+  div.stars {
+    width: 270px;
+    display: inline-block;
+  }
+
+  input.star { display: none; }
+
+  label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all .2s;
+  }
+
+  input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+  }
+
+  input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+  }
+
+  input.star-1:checked ~ label.star:before { color: #F62; }
+
+  label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+  label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+  }
+</style>
+<div class="form-style-5">
+  <script type="text/javascript">
+  $(".star").change(function(){
+    $("#star-1").val(false);
+    $("#star-2").val(false);
+    $("#star-3").val(false);
+    $("#star-4").val(false);
+    $("#star-5").val(false);
+    $(this).val("on");
+  });
+  function get_action(form) {
+    console.log(form);
+    var selected = $(form).find(":input[value=\"on\"]");
+    if(selected.length < 1) {
+      /*
+      $.jAlert({ //this is the normal usage
+        'title': 'Test',
+        'content': 'Howdy',
+        'theme': 'green',
+        'size': 'xsm'
+      });
+
+      var person = alert("No feedback was recorded.");
+
+      if (person == null || person == "") {
+        if (angular.element(document.getElementById('controllerForAngular')).scope().popup) {
+          angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+        } else {
+          if (angular.element(document.getElementById('controllerForAngular')).scope().popup) {
+            angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+          }
+        }
+      }
+          return;
+      jConfirm('Do you still want to give feedback?', 'Yes', 'Nope', function(confirmed){
+        if(confirmed){
+          return;
+        }else {
+          if (angular.element(document.getElementById('controllerForAngular')).scope().popup) {
+            angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+            return;
+          }
+        }});*/
+
+
+         /* angular.element(document.getElementById('controllerForAngular')).scope().popup = angular.element(document.getElementById('controllerForAngular')).scope().ionicPopup.show({
+            title: "You didn't provide any feedback yet.",
+            subTitle: 'Do you still want to give feedback?',
+            buttons: [
+              {
+                text: 'No, may be later...',
+                onTap: function(e) {
+                  if(angular.element(document.getElementById('controllerForAngular')).scope().popup) {
+                    alert("hi");
+                    angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+
+                  }
+                  //return;
+                }
+              },
+              {
+                text: 'Yes! Go back!',
+                onTap: function(e) {
+                 return;
+                }
+              }
+
+
+            ]});*/
+         try {
+           window.plugins.toast.showWithOptions(
+             {
+               message: "No feedback was recorded.",
+               duration: "long", // which is 2000 ms. "long" is 4000. Or specify the nr of ms yourself.
+               position: "bottom",
+               addPixelsY: -40  // added a negative value to move it up a bit (default 0)
+             }
+           );
+         }
+         catch(err){console.log(err);}
+     if(angular.element(document.getElementById('controllerForAngular')).scope().popup)
+        angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+      return;
+    }
+    var rating = selected[0].id.substring(selected[0].id.indexOf("-")+1);
+    console.log(rating);
+    var inner = $(form)[0].innerText;
+    var result = inner.split(/\n/)[2];
+    console.log(result);
+    if(typeof window.analytics !== 'undefined'){
+      window.analytics.trackEvent('Ratings', 'Ratings', 'Number', parseInt(rating));
+      window.analytics.trackEvent('Feedback', 'Feedback', 'Description', result);
+    }
+    if(angular.element(document.getElementById('controllerForAngular')).scope().popup)
+      angular.element(document.getElementById('controllerForAngular')).scope().popup.close();
+  }
+</script>
+
+  <form name="form" onsubmit="get_action(this);">
+    <legend><h3><b>Feedback Poll:</b></h3><h4><b>Help us make this app better by answering below! </b>(No one will know it was you)</h4></legend><br>
+    <fieldset for="form" id="rating">
+      <legend><span class="number">1</span>How much do you like the new changes?<br></legend>
+      <div id="job" class="stars">
+
+          <input class="star star-5" id="star-5" type="radio" name="star"/>
+          <label class="star star-5" for="star-5"></label>
+          <input class="star star-4" id="star-4" type="radio" name="star"/>
+          <label class="star star-4" for="star-4"></label>
+          <input class="star star-3" id="star-3" type="radio" name="star"/>
+          <label class="star star-3" for="star-3"></label>
+          <input class="star star-2" id="star-2" type="radio" name="star"/>
+          <label class="star star-2" for="star-2"></label>
+          <input class="star star-1" id="star-1" type="radio" name="star"/>
+          <label class="star star-1" for="star-1"></label>
+
+      </div>
+
+      <legend><span class="number">2</span>Why? (optional)</legend>
+      <textarea name="field3" placeholder="How was your experience?"></textarea>
+    </fieldset>
+    <input type="submit" for="form"value="SUBMIT (Anonymous feedback)" />
+  </form>
+</div>
