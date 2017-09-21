@@ -284,8 +284,35 @@ var checkInternet = async function(){
     else {
       console.log("TEXT LAYER: F");
      // angular.element(document.getElementById('controllerForAngular')).scope().promptX();
-      responsiveVoice.speak("Blank Page", "UK English Male", $scope.voiceParametersBlank());
-      $scope.nextPage();
+      responsiveVoice.speak("I think this page is blank. Please move on to the next page.", "UK English Male", {
+        onstart: $scope.voiceStartCallback,
+        onend: $scope.voiceEndCallbackBlank,
+        onerror: $scope.voiceErrorCallback,
+        rate: 1.0
+      });
+      //setTimeout(function(){$scope.finishRenderX();}, 1000);
+      /*$scope.popup = angular.element(document.getElementById('controllerForAngular')).scope().ionicPopup.show({
+        title: "This page has no text",
+        subTitle: 'Do you want to go to the next page?',
+        buttons: [
+          {
+            text: 'Stay',
+            onTap: function(e) {
+              $scope.waitForPageToLoad(false);
+            }
+          },
+          {
+            text: 'Next Page',
+            onTap: function(e) {
+              $scope.nextPage();
+            }
+          }
+
+
+        ]});*/
+      $scope.waitForPageToLoad(false);
+
+
     }
   };
   $scope.talkCont = function(isPrevPage)
@@ -321,7 +348,7 @@ var checkInternet = async function(){
 
         //$scope.talkCont();
         setTimeout(function () {
-          $scope.nextPage();
+          $scope.waitForPageToLoad(false);
           //$scope.finishRenderX();
         }, 250);
         return;
@@ -616,6 +643,33 @@ var checkInternet = async function(){
     responsiveVoice.cancel();
     $scope.index=0;
     var pageIndex = window.PDFViewerApplication.pdfViewer.currentPageNumber +1;
+    var pagesCount = window.PDFViewerApplication.pdfViewer.pagesCount;
+    var page = window.PDFViewerApplication.pdfViewer._pages[pageIndex];
+    if(pageIndex <= pagesCount) {
+
+      try{
+        window.PDFViewerApplication.zoomIn();
+        window.PDFViewerApplication.zoomOut();
+
+        // window.PDFViewerApplication.forceRendering();
+        //window.PDFViewerApplication.currentPageNumber = pageIndex ;
+        $("#pageNumber").val(pageIndex);
+      }catch (err)
+      {
+        console.log(err);
+      }
+      window.PDFViewerApplication.pdfViewer.scrollPageIntoView(pageIndex);
+    }
+    $scope.waitForPageToLoad(false);
+
+  };
+  $scope.nextPage3 = function()
+  {
+    if($scope.flagCheck)
+      clearInterval($scope.flagCheck);
+    responsiveVoice.cancel();
+    $scope.index=0;
+    var pageIndex = window.PDFViewerApplication.pdfViewer.currentPageNumber;
     var pagesCount = window.PDFViewerApplication.pdfViewer.pagesCount;
     var page = window.PDFViewerApplication.pdfViewer._pages[pageIndex];
     if(pageIndex <= pagesCount) {

@@ -5277,7 +5277,7 @@ var PDFViewer = (function pdfViewer() {
       console.log(curPageX);
       this.renderingQueue.idleTimeout =0;
 
-      if (pageView.id == curPageX&& pageView) {
+      if (pageView &&pageView.id && pageView.id == curPageX&& pageView) {
         this._ensurePdfPageLoaded(pageView).then(function () {
           //console.log(pageView);
 

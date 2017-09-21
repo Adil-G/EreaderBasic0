@@ -6,17 +6,21 @@
 }
 #slider .ui-slider-handle {
   background: #FCCF0D;
-    height: 4vh;
-    width: 4vh;
-    padding-left: 5px; //add this
+  height: 4vh;
+  width: 4vh;
+  padding-left: 5px; //add this
 }
 #buttonbar * {
 
   width: 13%;
   height: 100%;
 }
+#toolbarViewerSound, #buttonbar{
+  position: fixed;
+  top:7vh;
+}
 #myFile {
- width:100%;
+  width:100%;
 }
 #page_info{
   font-size: 5vw;
@@ -32,27 +36,27 @@ ion-content {
 }
 
 .icon-bar{
-    width: 100%;
-    background-color: #2A2927;
-    overflow: auto;
+  width: 100%;
+  background-color: #2A2927;
+  overflow: auto;
 }
 
 .icon-bar a {
-    float: left;
-    width: 20%;
-    text-align: center;
-    padding: 12px 12px;
-    transition: all 0.3s ease;
-    color: white;
-    font-size: 36px;
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 12px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
 }
 
 .icon-bar a:hover {
-    color: #FCCF0D;
+  color: #FCCF0D;
 }
 
 .active {
-    background-color: #4CAF50 !important;
+  background-color: #4CAF50 !important;
 }
 #page_info{
   position: fixed;
@@ -64,11 +68,11 @@ ion-content {
   outline: 9999px solid rgba(0,0,0,0.0);
 }
 .modal34 {
-    position: fixed;
-    bottom:10vh;
-    width:100%;
-    z-index: 10;
-    outline: 9999px solid rgba(0,0,0,0.0);
+  position: fixed;
+  bottom:10vh;
+  width:100%;
+  z-index: 10;
+  outline: 9999px solid rgba(0,0,0,0.0);
 }
 #zoom{
   position: absolute;
@@ -80,25 +84,25 @@ ion-content {
 
   z-index: 10;
   outline: 9999px solid rgba(0,0,0,0.0);
-background-color: #2A2927;
+  background-color: #2A2927;
 }
 input[type="file"] {
-    display: none;
+  display: none;
 }
 .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    width:100%;
-    height:100%;
-    background-color: #2A2927;
-    color:#FFF;
-    vertical-align: middle;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width:100%;
+  height:100%;
+  background-color: #2A2927;
+  color:#FFF;
+  vertical-align: middle;
 
-    font-size: 5vh;
-     font-family: "Courier-new";
-     text-align: center;
+  font-size: 5vh;
+  font-family: "Courier-new";
+  text-align: center;
 }
 /*
 .inputfile {
@@ -125,11 +129,11 @@ input[type="file"] {
 	cursor: pointer; /* "hand" cursor */
 
 .inputfile:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 .inputfile + label * {
-	pointer-events: none;
+  pointer-events: none;
 }
 .zoom {
   position: fixed;
@@ -147,7 +151,7 @@ input[type="file"] {
   font-size: 5vh;
   display: inline-table;
   vertical-align: middle;
- /* transform: translateY(0.5vh);*/
+  /* transform: translateY(0.5vh);*/
 }
 .zoom-fab{
   display: inline-block;
@@ -346,4 +350,12 @@ input[type="file"] {
 .form-style-5 input[type="button"]:hover
 {
   background: #109177;
+}
+
+.btn-primary.openFile{
+  color: #000;
+  background-color: #f00;
+  border-color: #f00;
+  height:7vh;width:30vw;
+  vertical-align: middle;
 }
