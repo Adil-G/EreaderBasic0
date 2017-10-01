@@ -39,6 +39,11 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
 .controller('SoundCtrl', function($scope,$ionicPlatform,$state, $ionicLoading, $ionicPopup,$timeout) {
   console.log = function() {};
+  $scope.openNav  =function(){
+    console.error("opening side bar");
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("outerContainer").style.marginLeft = "250px";
+  };
   $scope.flags = [];
   $scope.loaderProg = $ionicLoading;
   $scope.ionicPopup = $ionicPopup;
@@ -140,13 +145,13 @@ var checkInternet = async function(){
     onstart: $scope.voiceStartCallback,
     onend: $scope.voiceEndCallback,
     onerror: $scope.voiceErrorCallback,
-    rate: 1.0
+    rate: 1.2
   };
   $scope.voiceParametersBlank = {
     onstart: $scope.voiceStartCallback,
     onend: $scope.voiceEndCallbackBlank,
     onerror: $scope.voiceErrorCallback,
-    rate: 1.0
+    rate: 1.2
   };
   /*
   This function is used to link multiple groups of text lying on the same line
@@ -284,7 +289,7 @@ var checkInternet = async function(){
     else {
       console.log("TEXT LAYER: F");
      // angular.element(document.getElementById('controllerForAngular')).scope().promptX();
-      responsiveVoice.speak("I think this page is blank. Please move on to the next page.", "UK English Male", {
+      responsiveVoice.speak("I think this page is blank. I will move on to the next page.", "UK English Male", {
         onstart: $scope.voiceStartCallback,
         onend: $scope.voiceEndCallbackBlank,
         onerror: $scope.voiceErrorCallback,
@@ -310,7 +315,7 @@ var checkInternet = async function(){
 
 
         ]});*/
-      $scope.waitForPageToLoad(false);
+      //$scope.waitForPageToLoad(false);
 
 
     }

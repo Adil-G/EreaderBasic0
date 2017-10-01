@@ -17,7 +17,7 @@
 }
 #toolbarViewerSound, #buttonbar{
   position: fixed;
-  top:7vh;
+  top:0vh;
 }
 #myFile {
   width:100%;
