@@ -37,8 +37,68 @@ angular.module('starter', ['ionic', 'ngCordova'])
 })
 
 
-.controller('SoundCtrl', function($scope,$ionicPlatform,$state, $ionicLoading, $ionicPopup,$timeout) {
-  console.log = function() {};
+.controller('SoundCtrl', function($scope,$ionicPlatform,$state, $ionicLoading, $ionicPopup,$timeout, $http, $q) {
+  //console.log = function() {};
+  $scope.need2Translate = true;
+  $scope.gTranslate = function(phrase, lang, voice, params)
+  {
+    var langData = {
+      'phrase':phrase,
+      'lang':lang
+    };
+    var arr = [];
+    var headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'http://localhost:8101',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+      'Content-Type': 'application/json',
+      'Accept': 'text/html'
+    };
+    console.log("()SJD(JFSDF");
+    console.log(phrase);
+    console.log(lang);
+    var data = $.param({"phrase":phrase,"lang":lang}
+    );
+
+    var config = {
+      headers : {
+        'Content-Type': 'text/html'
+      }
+    };
+    var req = {
+      method: 'POST',
+      url: 'https://blooming-sea-87084.herokuapp.com/',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      data: {"phrase":phrase,"lang":lang}
+    };
+    $http(req)
+      .success(function (data, status, headers, config) {
+        $scope.PostDataResponse = data;
+        console.log(data);
+        /*if(lang!="en")
+        {
+          $scope.gTranslate(data, "en");
+        }*/
+        responsiveVoice.speak(data, voice, params);
+      })
+      .error(function (data, status, header, config) {
+        $scope.ResponseDetails = "Data: " + data +
+          "<hr />status: " + status +
+          "<hr />headers: " + header +
+          "<hr />config: " + config;
+        console.log($scope.ResponseDetails);
+        responsiveVoice.speak(phrase, voice, params);
+      });
+
+
+    return phrase;
+  };
+  $scope.speakT = function(phrase, voice, params)
+  {
+    $scope.gTranslate(phrase,"fr", "French Female", params);
+  };
   $scope.openNav  =function(){
     console.error("opening side bar");
     document.getElementById("mySidenav").style.width = "250px";
@@ -66,7 +126,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
           text: '<b>Next Page</b>',
           type: 'button-positive',
           onTap: function(e) {
-            responsiveVoice.speak("Blank Page", "UK English Male", $scope.voiceParameters);
+            $scope.speakT("Blank Page", "UK English Male", $scope.voiceParameters);
             $scope.nextPage();
           }
         },
@@ -135,7 +195,8 @@ var checkInternet = async function(){
   $scope.voiceErrorCallback= function() {
     console.log("ERROR!");
     responsiveVoice.cancel();
-    responsiveVoice.speak("Skipping this.", "UK English Male", $scope.voiceParameters);
+    $scope.speakT("Blank Page", "UK English Male", $scope.voiceParameters);
+
 
   };
   /*
@@ -269,7 +330,7 @@ var checkInternet = async function(){
         else{
           $scope.focusON = false;
         }
-        responsiveVoice.speak(whatToSay, "UK English Male", $scope.voiceParameters);
+        $scope.speakT(whatToSay, "UK English Male", $scope.voiceParameters);
 
       }
     }catch (err)
@@ -289,7 +350,7 @@ var checkInternet = async function(){
     else {
       console.log("TEXT LAYER: F");
      // angular.element(document.getElementById('controllerForAngular')).scope().promptX();
-      responsiveVoice.speak("I think this page is blank. I will move on to the next page.", "UK English Male", {
+      $scope.speakT("I think this page is blank. I will move on to the next page.", "UK English Male", {
         onstart: $scope.voiceStartCallback,
         onend: $scope.voiceEndCallbackBlank,
         onerror: $scope.voiceErrorCallback,
@@ -564,7 +625,7 @@ var checkInternet = async function(){
               $scope.nextPhrase();
             }
             else
-              responsiveVoice.speak(whatToSay, "UK English Male", $scope.voiceParameters);
+              $scope.speakT(whatToSay, "UK English Male", $scope.voiceParameters);
           }catch (err)
           {
             console.log(err);

@@ -4203,7 +4203,10 @@ var TextLayerBuilder = (function TextLayerBuilderClosure() {
       textDiv.style.fontSize = fontHeight + 'px';
       textDiv.style.fontFamily = style.fontFamily;
 
-      textDiv.textContent = geom.str;
+      var gTranslated = geom.str;
+      //if(angular.element(document.getElementById('controllerForAngular')).scope().need2Translate)
+      //gTranslated = angular.element(document.getElementById('controllerForAngular')).scope().gTranslate(geom.str,'zh-CN');
+      textDiv.textContent = gTranslated;
       // |fontName| is only used by the Font Inspector. This test will succeed
       // when e.g. the Font Inspector is off but the Stepper is on, but it's
       // not worth the effort to do a more accurate test.
