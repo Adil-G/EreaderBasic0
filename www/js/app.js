@@ -39,6 +39,10 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
 .controller('SoundCtrl', function($scope,$ionicPlatform,$state, $ionicLoading, $ionicPopup,$timeout, $http, $q) {
   //console.log = function() {};
+  $scope.languageOptions = {
+    voice: "UK English Male",
+    lang:"en"
+  };
   $scope.need2Translate = true;
   $scope.gTranslate = function(phrase, lang, voice, params)
   {
@@ -95,9 +99,38 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
     return phrase;
   };
+  $scope.translateOptions = function()
+  {
+    $ionicPopup.prompt({
+      templateUrl: 'templates/translate.html',
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Done</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            var selectedOpts = $("#voiceselection option:selected");
+           $scope.languageOptions.lang =  selectedOpts.attr("data-lang");
+            $scope.languageOptions.voice  = selectedOpts.val();
+          }
+        }
+      ]/*
+       }).then(function(res) {
+       console.log('Your name is', res);
+       var value = parseInt(res);
+       var pagesCount = window.PDFViewerApplication.pdfViewer.pagesCount;
+       if(value > 0 && value <= pagesCount)
+       window.PDFViewerApplication.pdfViewer.scrollPageIntoView(value);
+       responsiveVoice.cancel();
+       angular.element(document.getElementById('controllerForAngular')).scope().isTalking = true;
+       angular.element(document.getElementById('controllerForAngular')).scope().talkCont();
+       });*/
+      });
+
+  };
   $scope.speakT = function(phrase, voice, params)
   {
-    $scope.gTranslate(phrase,"fr", "French Female", params);
+    $scope.gTranslate(phrase,$scope.languageOptions.lang, $scope.languageOptions.voice, params);
   };
   $scope.openNav  =function(){
     console.error("opening side bar");
@@ -129,7 +162,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
             $scope.speakT("Blank Page", "UK English Male", $scope.voiceParameters);
             $scope.nextPage();
           }
-        },
+        }
       ]
     });
     $scope.myPopup.then(function(res) {
